@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;400&display=swap" rel="stylesheet">
+    
+    <title>IMP-Inc</title>
+</head>
+<body>
+    
+    
+    <div id="app">
+
+        <!-- for development -->
+        <button @click="prestigeOne = !prestigeOne">Toggle 1</button>
+        <button @click="prestigeTwo = !prestigeTwo">Toggle 2</button>
+
+        <div class="currency-container">
+            <div class="circles-currency">
+                You have {{ format(player.imp) }} imps.
+            </div>
+            
+            <div class="implosions-currency" v-if="prestigeOne">
+                You have {{ format(player.soulshard) }} soulshards.
+            </div>
+
+            <div class="warlocks-currency" v-if="prestigeTwo">
+                You have {{ format(player.dreadstalker) }} dreadstalkers.
+            </div>
+
+        </div>
+
+        <div class="producers-container">
+            <div class="generators-container">
+                <div 
+                class="generator circles-generator" 
+                
+                v-for="generator in player.circles">
+                    <generator :generator="generator"/>
+                </div>
+                <add-generator-button target="circles" v-if="genCounterOne"/>
+            </div>
+
+            <div class="generators-container" v-if="prestigeOne">
+                <div class="generator implosions-generator" 
+                
+                v-for="generator in player.implosions">
+                    <generator :generator="generator"/>
+                </div>
+                <add-generator-button target="implosions" v-if="genCounterTwo"/>
+            </div>
+
+            <div class="generators-container" v-if="prestigeTwo">
+                <div class="generator warlocks-generator" 
+                
+                v-for="generator in player.warlocks">
+                    <generator :generator="generator"/>
+                </div>
+                <add-generator-button target="warlocks" v-if="genCounterThree"/>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="js/vue.js"></script>
+
+<script src="js/generator.js"></script>
+
+<script src="js/components/generator.js"></script>
+<script src="js/components/add-generator-button.js"></script>
+
+<script src="js/player.js"></script>
+<script src="js/format.js"></script>
+<script src="js/loop.js"></script>
+<script src="js/format.js"></script>
+<script src="js/index.js"></script>
+
+</html>
