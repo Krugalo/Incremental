@@ -15,9 +15,9 @@
     
     <div id="app">
 
-        <!-- for development -->
-        <button @click="prestigeOne = !prestigeOne">Toggle 1</button>
-        <button @click="prestigeTwo = !prestigeTwo">Toggle 2</button>
+        <!-- buttons for development -->
+        
+        <button @click="prestigeTwo = !prestigeTwo">Toggle {{player.currNames[2]}}</button>
 
         <div class="currency-container">
             <div class="genOne-currency">
@@ -42,7 +42,7 @@
                 v-for="generator in player.genOne">
                     <generator :generator="generator"/>
                 </div>
-                <add-generator-button target="genOne" v-if="genCounterOne"/>
+                <add-generator-button target="genTwo" v-if="genCounterOne"/>
             </div>
 
             <div class="generators-container" v-if="prestigeOne">
@@ -63,6 +63,7 @@
                 <add-generator-button target="genThree" v-if="genCounterThree"/>
             </div>
         </div>
+        
     </div>
 
 </body>
@@ -73,6 +74,7 @@
 
 <script src="js/components/generator.js"></script>
 <script src="js/components/add-generator-button.js"></script>
+
 
 <script src="js/player.js"></script>
 <script src="js/format.js"></script>

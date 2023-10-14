@@ -74,7 +74,8 @@ body {
     display: block;
 }
 
-.add-generator-button {
+.add-generator-button,
+.add-boost-button {
     width: 300px;
     height: 150px;
     text-align: center;
@@ -91,11 +92,14 @@ body {
     border-top: 2px solid #89A894;
 }
 
-.add-generator-button h1 {
+.add-generator-button,
+.add-boost-button h1 {
     margin: 0;
 }
 
-.generator--unavailable, .add-generator-button--unavailable {
+.generator--unavailable, 
+.add-generator-button--unavailable,
+.add-boost-button--unavailable {
     background: #641C1C;
     cursor: default;
 }

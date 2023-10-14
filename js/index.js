@@ -3,8 +3,8 @@ const app = new Vue({
     el: '#app',
     data: {
             player: player,
-            prestigeOne: false, // if prestige ve been activated
-            prestigeTwo: false,
+            prestigeOne: 1, // if prestige ve been activated
+            prestigeTwo: 0,
             //app.prestigeOne = true
             genCounterOne: true, // if less than 8 generators
             genCounterTwo: true,

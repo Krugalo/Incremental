@@ -130,6 +130,7 @@ dist
 .pnp.*
 
 # my files
-idea.txt
-todolist.txt
+txt/idea.txt
+txt/todolist.txt
 .gitignore
+txt

@@ -8,9 +8,9 @@ function producePrevious(generatorArray, diff) {
 function gameLoop(that) {
     let diff = (Date.now() - that.player.lastUpdate) / 1000
 
-    that.player.imp += that.player.genOne[0].productionPerSecond() * diff
-    that.player.soulshard += that.player.genTwo[0].productionPerSecond() * diff
-    that.player.dreadstalker += that.player.genThree[0].productionPerSecond() * diff
+    that.player.currOne += that.player.genOne[0].productionPerSecond() * diff
+    if (app.prestigeOne){ that.player.currTwo += that.player.genTwo[0].productionPerSecond() * diff}
+    if (app.prestigeTwo){ that.player.currThree += that.player.genThree[0].productionPerSecond() * diff}
     
     producePrevious(that.player.genOne, diff)
     producePrevious(that.player.genTwo, diff)

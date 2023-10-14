@@ -17,7 +17,7 @@ class Generator{
     }
 
     get canBuy() {
-        return this.cost <= player[this.currency]
+        return this.cost <= player.currOne
     }
 
     get canBuy10() {
@@ -27,15 +27,16 @@ class Generator{
             k = this.multCost(k, this.tier)
         }
         this.cost10 = k
-        return k <= player[this.currency]
+        return k <= player.currOne
     }
 
     buy() {
         if (!this.canBuy) return // not enough
-        player[this.currency] -= this.cost // payment
+        player.currOne-= this.cost // payment
         this.cost = this.multCost(this.cost, this.tier) // new cost
         this.amount += 1 // amount inc
         this.bought += 1 // bought inc
+        this.mult *= 2
 
         if (this.bought%100 == 0) this.mult *= 5
         else if (this.bought%10 == 0) this.mult *= 3
@@ -47,18 +48,18 @@ class Generator{
         for (let i = 0; i < 9; i++) {
             this.cost = this.multCost(this.cost, this.tier)
         }
-        player[this.currency] -= this.cost // payment
+        player.currOne -= this.cost // payment
         this.cost = this.multCost(this.cost, this.tier) // new cost
         this.amount += 10 // amount inc
         this.bought += 10 // bought inc
-        console.log(player[this.currency])
+        console.log(player.currOne)
 
         if (this.bought%100 == 0) this.mult *= 5
         else if (this.bought%10 == 0) this.mult *= 3
     }
 
     productionPerSecond() {
-        let ret = this.amount * this.mult
+        let ret = 1 * this.mult
         if (this.tier !== 0) ret /= 5
         this.production = ret
         return ret
