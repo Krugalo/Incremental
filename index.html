@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;400&display=swap" rel="stylesheet">
     
-    <title>IMP-Inc</title>
+    <title>Incremental</title>
 </head>
 <body>
     
@@ -20,16 +20,16 @@
         <button @click="prestigeTwo = !prestigeTwo">Toggle 2</button>
 
         <div class="currency-container">
-            <div class="circles-currency">
-                You have {{ format(player.imp) }} imps.
+            <div class="genOne-currency">
+                You have {{ format(player.currOne) }} {{player.currNames[0]}}s.
             </div>
             
-            <div class="implosions-currency" v-if="prestigeOne">
-                You have {{ format(player.soulshard) }} soulshards.
+            <div class="genTwo-currency" v-if="prestigeOne">
+                You have {{ format(player.currTwo) }} {{player.currNames[1]}}s.
             </div>
 
-            <div class="warlocks-currency" v-if="prestigeTwo">
-                You have {{ format(player.dreadstalker) }} dreadstalkers.
+            <div class="genThree-currency" v-if="prestigeTwo">
+                You have {{ format(player.currThree) }} {{player.currNames[2]}}s.
             </div>
 
         </div>
@@ -37,30 +37,30 @@
         <div class="producers-container">
             <div class="generators-container">
                 <div 
-                class="generator circles-generator" 
+                class="generator genOne-generator" 
                 
-                v-for="generator in player.circles">
+                v-for="generator in player.genOne">
                     <generator :generator="generator"/>
                 </div>
-                <add-generator-button target="circles" v-if="genCounterOne"/>
+                <add-generator-button target="genOne" v-if="genCounterOne"/>
             </div>
 
             <div class="generators-container" v-if="prestigeOne">
-                <div class="generator implosions-generator" 
+                <div class="generator genTwo-generator" 
                 
-                v-for="generator in player.implosions">
+                v-for="generator in player.genTwo">
                     <generator :generator="generator"/>
                 </div>
-                <add-generator-button target="implosions" v-if="genCounterTwo"/>
+                <add-generator-button target="genTwo" v-if="genCounterTwo"/>
             </div>
 
             <div class="generators-container" v-if="prestigeTwo">
-                <div class="generator warlocks-generator" 
+                <div class="generator genThree-generator" 
                 
-                v-for="generator in player.warlocks">
+                v-for="generator in player.genThree">
                     <generator :generator="generator"/>
                 </div>
-                <add-generator-button target="warlocks" v-if="genCounterThree"/>
+                <add-generator-button target="genThree" v-if="genCounterThree"/>
             </div>
         </div>
     </div>

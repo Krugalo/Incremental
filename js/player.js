@@ -1,46 +1,48 @@
 var player = {
-    imp: 100, // circles
-    soulshard: 40, // implosions
-    dreadstalker: 30, // warlocks
-    circles: [],
-    implosions: [],
-    warlocks: [],
+    currOne: 100, // currency 1
+    currTwo: 40, // currency 2
+    currThree: 30, // currency 3
+    genOne: [], // generator 1
+    genTwo: [], // generator 2
+    genThree: [], // generator 3
     lastUpdate: Date.now(),
+    currNames: ["currOne", "currTwo", "currThree"],
+    genNames: ["genOne", "genTwo", "genThree"]
 }
 
 // first buys of generators
-var firstCircle = {
+var firstGenOne = {
     tier: 0,
     cost: 10,
     mult: 10,
     amount: 0,
     bought: 0,
-    name: "Summoning Circle I",
-    currency: "imp"
+    name: player.genNames[0] + " I",
+    currency: player.currNames[0]
 }
 
-var firstImplosion = {
+var firstGenTwo = {
     tier: 0,
     cost: 30,
     mult: 1,
     amount: 0,
     bought: 0,
-    name: "Fire Implosion I",
-    currency: "soulshard"
+    name: player.genNames[1] + " I",
+    currency: player.currNames[1]
 }
 
-var firstWarlock = {
+var firstGenThree = {
     tier: 0,
     cost: 30,
     mult: 1,
     amount: 0,
     bought: 0,
-    name: "Warlock Initiate I",
-    currency: "dreadstalker"
+    name: player.genNames[2] + " I",
+    currency: player.currNames[2]
 }
 
 // push first prices into tables
-player.circles.push(new Generator(firstCircle)) 
-player.implosions.push(new Generator(firstImplosion))
-player.warlocks.push(new Generator(firstWarlock)) 
+player.genOne.push(new Generator(firstGenOne)) 
+player.genTwo.push(new Generator(firstGenTwo))
+player.genThree.push(new Generator(firstGenThree)) 
 

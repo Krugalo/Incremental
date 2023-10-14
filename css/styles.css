@@ -18,9 +18,10 @@ body {
     justify-content: space-between;
 }
 
-.circles-currency, 
-.implosions-currency, 
-.warlocks-currency {
+.genOne-currency, 
+.genTwo-currency, 
+.genThree-currency,
+.currency {
     width: 300px;
     text-align: center;
     padding: 40px 10px;

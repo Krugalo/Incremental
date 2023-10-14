@@ -10,3 +10,5 @@ implosion -> implode them into soul shards [prestige]
 soulshard shop -> talent tree
 
 MVP - minimal vial product
+
+https://www.electronjs.org/docs/latest/tutorial/tutorial-publishing-updating

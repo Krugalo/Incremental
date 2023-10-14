@@ -10,7 +10,7 @@ Vue.component('add-generator-button', {
             if (player[this.target].length > 8) return // only 8 generators
             if (!this.canBuy) return // not enough
             player[getColumnName(this.target)] -= this.tierCost(); // reduce currency by price
-            player[this.target].push(createGenerator(player[this.target].length, this.target)) // add to list
+            player[this.target].push(createGenerator(player[this.target].length, this.target, 1)) // add to list
             
             if (player[this.target].length == 8) { // max 8 generators each type
                 switch (getColumn(this.target)) {

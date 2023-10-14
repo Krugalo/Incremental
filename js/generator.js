@@ -31,7 +31,6 @@ class Generator{
     }
 
     buy() {
-        // console.log(player.imp)
         if (!this.canBuy) return // not enough
         player[this.currency] -= this.cost // payment
         this.cost = this.multCost(this.cost, this.tier) // new cost
@@ -70,13 +69,13 @@ class Generator{
 // name of generator into number of type
 function getColumn(type) {
     switch (type) {
-        case "circles":
+        case "genOne":
             return 1;
 
-        case "implosions":
+        case "genTwo":
             return 2;
         
-        case "warlocks":
+        case "genThree":
             return 3;
     }
 }
@@ -84,34 +83,34 @@ function getColumn(type) {
 // name of generator into currency name
 function getColumnName(type) {
     switch (type) {
-        case "circles":
-            return "imp";
+        case "genOne":
+            return player.currNames[0];
 
-        case "implosions":
-            return "soulshard";
+        case "genTwo":
+            return player.currNames[1];
         
-        case "warlocks":
-            return "dreadstalker";
+        case "genThree":
+            return player.currNames[2];
     }
 }
 
 // names of tiers of generators
-const circle_names = ["Summoning Circle"]
-const implosion_names = ["Fire Implosion"]
-const warlock_names = ["Warlock Initiate"]
+const genOne_names = ["genOne"]
+const genTwo_names = ["genTwo"]
+const genThree_names = ["genThree"]
 
 const roman_numbers = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII"]
 
 function generateGeneratorName(tier, type) {
     switch (type) {
-        case "circles":
-            return circle_names[tier%circle_names.length];
+        case "genOne":
+            return genOne_names[tier%genOne_names.length];
 
-        case "implosions":
-            return implosion_names[tier%implosion_names.length];
+        case "genTwo":
+            return genTwo_names[tier%genTwo_names.length];
         
-        case "warlocks":
-            return warlock_names[tier%warlock_names.length];
+        case "genThree":
+            return genThree_names[tier%genThree_names.length];
     }
 }
 
@@ -121,7 +120,7 @@ function getRoman(tier) {
 }
 
 // instead of doing it for every single one, lets make function to create these with template
-function createGenerator(tier, type) {
+function createGenerator(tier, type, amount = 0) {
     let col = getColumn(type)
 
     // packing all things for generator into list of thingies
@@ -129,8 +128,8 @@ function createGenerator(tier, type) {
         name: generateGeneratorName(tier, type) + ' ' + getRoman(tier),
         cost: Math.pow(10, tier * (col + 1)),
         mult: 1,
-        amount: 0,
-        bought: 0,
+        amount: amount,
+        bought: amount,
         tier: tier,
         currency: getColumnName(type)
     }
